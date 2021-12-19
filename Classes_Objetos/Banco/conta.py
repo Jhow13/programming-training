@@ -22,5 +22,15 @@ class Conta:
         for i in self.operacoes:
             print("%10s %10.2f" % (i[0], i[1]))
         print("\n Saldo: %10.2f\n" % self.saldo)
-        
+
+class ContaEspecial(Conta):
+    def __init__(self, clientes, numero, saldo = 0, limite = 0):
+        Conta.__init__(self, clientes, numero, saldo)
+        self.saldo = saldo
+        self.limite = limite
+    def saque(self, valor):
+        if self.saldo + self.limite >= valor:
+            self.saldo -= valor
+            self.operacoes.append(["SAQUE: ", valor])
+                
     
