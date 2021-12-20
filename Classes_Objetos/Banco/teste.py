@@ -7,7 +7,7 @@ maria = Cliente("Maria do Bairro", "999-555")
                 
 #Importação e criação de Conta
 conta_1 = Conta("Joao da Silva", 1, "777-666", 200)
-conta_2 = Conta("Maria do Bairro", 5, "999-555", 400)
-conta_3 = ContaEspecial("José Vieira", 6, 600, 1300)
+conta_2 = Conta("Maria do Bairro", 2, "999-555", 400)
+conta_3 = ContaEspecial("José Vieira", 3, 600, 1300)
 
 

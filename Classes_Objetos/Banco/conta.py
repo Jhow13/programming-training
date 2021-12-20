@@ -11,9 +11,11 @@ class Conta:
     def saque(self, valor):
         if self.saldo >= valor:
             self.saldo -= valor
-            self.operacoes.append(["Saque", valor])
+            self.operacoes.append(["SAQUE: ", valor])
+            return "Saque Efetuado com sucesso!"
         else:
-            print("Saldo Insuficiente")
+            return "Saldo Insuficiente"
+            
     def deposito(self, valor):
         self.saldo += valor
         self.operacoes.append(["DEPÓSITO: ", valor])
@@ -21,7 +23,7 @@ class Conta:
         print("Extrato CC N %s\n" % self.numero)
         for i in self.operacoes:
             print("%10s %10.2f" % (i[0], i[1]))
-        print("\n Saldo: %10.2f\n" % self.saldo)
+        print("\nSaldo: %10.2f" % self.saldo)
 
 class ContaEspecial(Conta):
     def __init__(self, clientes, numero, saldo = 0, limite = 0):
@@ -32,5 +34,13 @@ class ContaEspecial(Conta):
         if self.saldo + self.limite >= valor:
             self.saldo -= valor
             self.operacoes.append(["SAQUE: ", valor])
+    def extrato(self):
+        saque_disponivel = self.saldo + self.limite
+        print("Extrato CC N %s" % self.numero)
+        for i in self.operacoes:
+            print("%10s %6.2f" % (i[0], i[1]))
+        print("\nSaldo: %6.2f \nLimite: %6.2f \nSaldo Disponível para saque: %6.2f" %
+              (self.saldo, self.limite, saque_disponivel))
+            
                 
     
